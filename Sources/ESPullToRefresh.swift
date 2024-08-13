@@ -133,7 +133,7 @@ public extension ES where Base: UIScrollView {
     }
     
     /// Footer notice method
-    func  noticeNoMoreData() {
+    func noticeNoMoreData() {
         self.base.footer?.stopRefreshing()
         self.base.footer?.noMoreData = true
     }
@@ -343,6 +343,9 @@ open class ESRefreshFooterView: ESRefreshComponent {
         didSet {
             if noMoreData != oldValue {
                 self.animator.refresh(view: self, stateDidChange: noMoreData ? .noMoreData : .pullToRefresh)
+            }
+            if noMoreData {
+                self.alpha = 1
             }
         }
     }
