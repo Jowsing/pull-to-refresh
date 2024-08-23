@@ -407,14 +407,15 @@ open class ESRefreshFooterView: ESRefreshComponent {
             // 正在loading more或者内容为空时不相应变化
             return
         }
-        if scrollView.contentOffset.y + scrollView.contentInset.top <= 0.0 {
-            return
-        }
         if scrollView.contentSize.height <= 0.0 {
             self.alpha = 0.0
             return
         } else {
             self.alpha = 1.0
+        }
+        
+        if scrollView.contentOffset.y + scrollView.contentInset.top <= 0.0 {
+            return
         }
         
         if scrollView.contentSize.height + scrollView.contentInset.top > scrollView.bounds.size.height {
